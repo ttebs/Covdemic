@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-ro
 import './App.scss';
 import Country from './components/Country';
 import Countries from './components/Countries';
+import ReactGa from 'react-ga';
 
 
 
@@ -22,6 +23,8 @@ const App = () => {
   const date = `${monthNames[tempDate.getMonth()]} ${tempDate.getDate()}, ${tempDate.getFullYear()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`;
   
   useEffect( () => {
+    ReactGa.initialize('UA-162133610-1');
+    ReactGa.pageview(window.location.pathname);
     getCountryNames();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
