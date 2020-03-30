@@ -52,7 +52,7 @@ const Country = (props) => {
                         <CountUp separator="," start={0} end={countryData.deaths ? countryData.deaths : 0} />
                     </article>
                     <article className="country-data__today-deaths">
-                        <h3>TODAY'S DEATH</h3>
+                        <h3>TODAY'S DEATHS</h3>
                         <CountUp separator="," start={0} end={countryData.todayDeaths ? countryData.todayDeaths : 0} />
                     </article>
                     <article className="country-data__critical">
