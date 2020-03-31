@@ -6,24 +6,27 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        margin-top: 30px;
         article {
             width: 33.333%;
             padding-bottom: 70px;
             h3 {
                 color: #fff;
-                font-size: 30px;
+                margin-bottom: 50px;
             }
             p {
-                font-family: 'Arimo', sans-serif;
-                font-size: 71px;
+                font-family: 'BigNoodle';
+                font-size: 90px;
                 color: #fff;
                 font-weight: bold;
+                letter-spacing: 2px;
             }
             span {
-                font-family: 'Arimo', sans-serif;
-                font-size: 71px;
+                font-family: 'BigNoodle';
+                font-size: 90px;
                 color: #fff;
                 font-weight: bold;
+                letter-spacing: 2px;
             }
         }
     }
@@ -49,6 +52,7 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
+        margin-top: 30px;
         article {
             width: calc(25% - 50px);
             margin-bottom: 50px;
@@ -61,9 +65,8 @@
                 letter-spacing: 0;
             }
             p,span {
-                font-family: 'Arimo', sans-serif;
-                font-size: 30px;
-                font-weight: bold;
+                font-family: 'BigNoodle';
+                font-size: 50px;
                 margin: 0 0;
             }
         }
@@ -116,13 +119,34 @@
         font-weight: bold;
     }
     &__logo{
+        width: 190px;
         margin-left: 20px;
-        margin-top: 20px;
     }
 }
 .current-time{
-    position: absolute;
-    color: #fff;
-    top: 155px;
-    left: 22px;
+    position: relative;
+    font-family: 'MontserratMedium';
+    color: #f0a741;
+    // top: 155px;
+    // left: 22px;
+    margin: 0;
+    font-size: 15px;
+    position: relative;
+    top: -6px;
+}
+
+.top-countries{
+    h2{
+        text-align: center;
+    }
+    &__con{
+        article{
+            li{
+                list-style-type: none;
+                span{
+                    color: #fff;
+                }
+            }
+        }
+    }
 }

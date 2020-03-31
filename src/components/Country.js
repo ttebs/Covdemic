@@ -37,6 +37,7 @@ const Country = (props) => {
             <section className="country-data">
                 <header>
                     <h1>{country}</h1>
+                    <p className="current-time">{props.currentDate}</p>
                 </header>
                 <section className="country-data__con">
                     <article className="country-data__cases">

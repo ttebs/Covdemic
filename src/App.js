@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Switch, Route, Redirect, Link } from 'react-router-dom';
 import './App.scss';
+import logo from './images/logo.png';
 import Country from './components/Country';
 import Countries from './components/Countries';
 import ReactGa from 'react-ga';
@@ -11,6 +12,7 @@ import ReactGa from 'react-ga';
 const App = () => {
 
   const [countryNames, setCountryNames] = useState([]);
+  const [countryData, setCountryData] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState({
     redirect: false,
     country: ""
@@ -20,8 +22,9 @@ const App = () => {
   "July", "August", "September", "October", "November", "December"
   ];
   const tempDate = new Date();
-  const date = `${monthNames[tempDate.getMonth()]} ${tempDate.getDate()}, ${tempDate.getFullYear()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`;
-  
+  const currentDate = `${monthNames[tempDate.getMonth()]} ${tempDate.getDate()}, ${tempDate.getFullYear()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`;
+
+
   useEffect( () => {
     ReactGa.initialize('UA-162133610-1');
     ReactGa.pageview(window.location.pathname);
@@ -32,12 +35,26 @@ const App = () => {
   const getCountryNames = () => {
     axios.get('https://coronavirus-19-api.herokuapp.com/countries')
     .then (response => {
+
+      // const topCases = response.data.slice(0, 10);
+      const topData = response.data.map(item => ({
+        country: item.country,
+        cases: item.cases,
+        deaths: item.deaths,
+        recovered: item.recovered
+      }));
+
+      setCountryData(topData)
+
       // sort country descending order
       const sortProperty = 'country';
-      const sorted = response.data.sort ( function( a , b ){
-        if (b[sortProperty] > a[sortProperty]) return -1;
-        else return 0;
-      });
+      const sorted = response.data
+        .sort((a, b) => {
+          if (b[sortProperty] > a[sortProperty]) return -1;
+          else return 0;
+        }).map(item => ({
+          name: item.country,
+        }));
       setCountryNames(sorted);
     })
     .catch(error => {
@@ -60,27 +77,21 @@ const App = () => {
       <div className="App">
         <p>{selectedCountry.redirect}</p>
         <header className="index-header">
-          <Link to="/">
-            <div className="index-header__logo">
-              <span className="index-header__co">CO</span>
-              <span className="index-header__vid">VID</span>
-              <span className="index-header__dash">-</span>
-              <span className="index-header__one-nine">19</span>
-            </div>
-          </Link>
-          <select className="index-header__select" onChange={handleSelection}>
-            <option value="no">Select Country</option>
-            {countryNames.map((country, i) => (
-                <React.Fragment key={i}>
-                  <option value={country.country}>{country.country}</option>
-                </React.Fragment>
-            ))}
-          </select>
+            <Link to="/">
+                <img alt="" src={logo} className="index-header__logo"></img>
+            </Link>
+            <select className="index-header__select" onChange={handleSelection}>
+              <option value="no">SELECT COUNTRY</option>
+              {countryNames.map((country, i) => (
+                  <React.Fragment key={i}>
+                    <option value={country.name}>{country.name}</option>
+                  </React.Fragment>
+              ))}
+            </select>
         </header>
-        <span className="current-time">{date}</span>
         <Switch>
-            <Route exact path="/" component={Countries} />
-            <Route path="/country/:name" component={Country} />
+            <Route exact path="/" render={(props) => <Countries {...props} countryData={countryData} currentDate={currentDate} />}/>
+            <Route path="/country/:name" render={(props) => <Country {...props} currentDate={currentDate} />}/>
           </Switch>
       </div>
     </Router>

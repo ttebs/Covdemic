@@ -3,8 +3,9 @@ import axios from 'axios';
 
 import CountUp from 'react-countup';
 
-function Countries() {
 
+
+const Countries = (props) => {
   const [data, setData] = useState({});
   useEffect( () => {
     getAllData();
@@ -21,10 +22,12 @@ function Countries() {
     })
   }
 
+  
   return (
     <div>
       <section className="all-data">
         <h1>GLOBAL</h1>
+        <p className="current-time">{props.currentDate}</p>
         <div className="all-data__con">
           <article className="all-data__cases">
             <h3>CASES</h3>
