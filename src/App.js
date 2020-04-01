@@ -92,7 +92,10 @@ const App = () => {
         <Switch>
             <Route exact path="/" render={(props) => <Countries {...props} countryData={countryData} currentDate={currentDate} />}/>
             <Route path="/country/:name" render={(props) => <Country {...props} currentDate={currentDate} />}/>
-          </Switch>
+        </Switch>
+        <footer>
+              <p>stevenwilsabana@gmail.com</p>
+        </footer>
       </div>
     </Router>
   );
