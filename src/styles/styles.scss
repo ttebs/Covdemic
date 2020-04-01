@@ -136,15 +136,79 @@
 }
 
 .top-countries{
+    table{
+        border-collapse: collapse;
+    }
     h2{
         text-align: center;
+        margin-bottom: 25px;
     }
     &__con{
-        article{
-            li{
-                list-style-type: none;
+        width: 100%;
+        max-width: 950px;
+        margin: 0 auto 50px;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__item{
+            background-color: #fff;
+            padding: 15px 20px 20px;
+        th{
+            padding-bottom: 10px;
+            span{
+                font-family: 'BigNoodle';
+                font-size: 30px;
+                letter-spacing: 1px;
+            }
+        }
+        td{
+            border-bottom: 1px solid #121212;
+            padding: 7px;
+            span{
+                color: #121212;
+                font-family: 'MontserratMedium';
+                font-size: 15px;
+                word-wrap: break-word;
+            }
+        }
+        .country-name{
+            width: 100%;
+            max-width: 105px;
+            padding: 2px 30px 2px 2px;
+        }
+        &--case{
+            th{
                 span{
-                    color: #fff;
+                    color: #2C7073;
+                }
+            }
+            td{
+                .number-color{
+                    color: #2C7073;
+                }
+            }
+        }
+        &--deaths{
+            th{
+                span{
+                    color: #DC1C13;
+                }
+            }
+            td{
+                .number-color{
+                    color: #DC1C13;
+                }
+            }
+        }
+        &--recovered{
+            th{
+                span{
+                    color: #036406;
+                }
+            }
+            td{
+                .number-color{
+                    color: #036406;
                 }
             }
         }

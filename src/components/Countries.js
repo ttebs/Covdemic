@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 
 import CountUp from 'react-countup';
+import TopCountries from './topCountries';
 
 
 
@@ -45,6 +46,7 @@ const Countries = (props) => {
           </article>
         </div>
       </section>
+      <TopCountries countryData={props.countryData} />
     </div>
   );
 }
