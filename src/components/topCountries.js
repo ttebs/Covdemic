@@ -30,8 +30,6 @@ const topCountries = (props) => {
             name: item.country,
             recovered: item.recovered,
         }));
-    console.log(topRecovered)
-
 
   return (
     <div>
