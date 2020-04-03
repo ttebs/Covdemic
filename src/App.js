@@ -95,6 +95,7 @@ const App = () => {
         </Switch>
         <footer>
               <p>stevenwilsabana@gmail.com</p>
+              <a href="https://www.privacypolicygenerator.info/live.php?token=APgrzH3qFYnjsylVvBLoFR3sUACNrrL3" alt="">Privacy Policy</a>
         </footer>
       </div>
     </Router>
