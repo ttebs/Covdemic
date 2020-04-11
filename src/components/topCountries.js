@@ -3,11 +3,11 @@ import NumberFormat from 'react-number-format';
 
 
 const topCountries = (props) => {
-   
+    
     let sortProperty = 'cases';
     const topCases = props.countryData
         .sort((a, b) => b[sortProperty] - a[sortProperty])
-        .slice(1, 11)
+        .slice(0, 11)
         .map(item => ({
             name: item.country,
             cases: item.cases,
@@ -16,7 +16,7 @@ const topCountries = (props) => {
     sortProperty = 'deaths';
     const topDeaths = props.countryData
         .sort((a, b) => b[sortProperty] - a[sortProperty])
-        .slice(1, 11)
+        .slice(0, 11)
         .map(item => ({
             name: item.country,
             deaths: item.deaths,
@@ -25,7 +25,7 @@ const topCountries = (props) => {
     sortProperty = 'recovered';
     const topRecovered = props.countryData
         .sort((a, b) => b[sortProperty] - a[sortProperty])
-        .slice(1, 11)
+        .slice(0, 11)
         .map(item => ({
             name: item.country,
             recovered: item.recovered,
@@ -40,7 +40,7 @@ const topCountries = (props) => {
                     <table>
                         <tbody>
                             <tr>
-                                <th colspan="4">
+                                <th colSpan="4">
                                     <span>CASES</span>
                                 </th>
                             </tr>
@@ -71,7 +71,7 @@ const topCountries = (props) => {
                     <table>
                         <tbody>
                             <tr>
-                                <th colspan="3">
+                                <th colSpan="3">
                                     <span>DEATHS</span>
                                 </th>
                             </tr>
@@ -103,7 +103,7 @@ const topCountries = (props) => {
                     <table>
                         <tbody>
                             <tr>
-                                <th colspan="3">
+                                <th colSpan="3">
                                     <span>RECOVERED</span>
                                 </th>
                             </tr>

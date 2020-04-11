@@ -24,6 +24,7 @@ const App = () => {
   const tempDate = new Date();
   const currentDate = `${monthNames[tempDate.getMonth()]} ${tempDate.getDate()}, ${tempDate.getFullYear()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`;
 
+  const notCountries = ["World", "Europe", "Asia", "North America", "South America", "Oceania", "Africa" ,"Total:"]
 
   useEffect( () => {
     ReactGa.initialize('UA-162133610-1');
@@ -37,7 +38,9 @@ const App = () => {
     .then (response => {
 
       // const topCases = response.data.slice(0, 10);
-      const topData = response.data.map(item => ({
+      const topData = response.data
+      .filter(item => notCountries.indexOf(item.country) === -1)
+      .map(item => ({
         country: item.country,
         cases: item.cases,
         deaths: item.deaths,
