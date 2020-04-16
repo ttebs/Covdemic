@@ -24,7 +24,7 @@ const App = () => {
   const tempDate = new Date();
   const currentDate = `${monthNames[tempDate.getMonth()]} ${tempDate.getDate()}, ${tempDate.getFullYear()} ${tempDate.getHours()}:${tempDate.getMinutes()}:${tempDate.getSeconds()}`;
 
-  const notCountries = ["World", "Europe", "Asia", "North America", "South America", "Oceania", "Africa" ,"Total:"]
+  const notCountries = ["World", "Europe", "Asia", "North America", "South America", "Oceania", "Africa" ,"Total:", ""]
 
   useEffect( () => {
     ReactGa.initialize('UA-162133610-1');
@@ -52,6 +52,7 @@ const App = () => {
       // sort country descending order
       const sortProperty = 'country';
       const sorted = response.data
+        .filter(item => notCountries.indexOf(item.country) === -1)
         .sort((a, b) => {
           if (b[sortProperty] > a[sortProperty]) return -1;
           else return 0;
