@@ -7,7 +7,7 @@ const topCountries = (props) => {
     let sortProperty = 'cases';
     const topCases = props.countryData
         .sort((a, b) => b[sortProperty] - a[sortProperty])
-        .slice(0, 11)
+        .slice(0, 10)
         .map(item => ({
             name: item.country,
             cases: item.cases,
@@ -16,7 +16,7 @@ const topCountries = (props) => {
     sortProperty = 'deaths';
     const topDeaths = props.countryData
         .sort((a, b) => b[sortProperty] - a[sortProperty])
-        .slice(0, 11)
+        .slice(0, 10)
         .map(item => ({
             name: item.country,
             deaths: item.deaths,
@@ -25,7 +25,7 @@ const topCountries = (props) => {
     sortProperty = 'recovered';
     const topRecovered = props.countryData
         .sort((a, b) => b[sortProperty] - a[sortProperty])
-        .slice(0, 11)
+        .slice(0, 10)
         .map(item => ({
             name: item.country,
             recovered: item.recovered,
